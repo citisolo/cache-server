@@ -20,7 +20,7 @@ func TestInsertObj(t *testing.T) {
 	var input = []byte(`{"id":"1234", "token":"56789101112131415"}`)
 	postDataRequest, _ := http.NewRequest("POST", "/token", bytes.NewBuffer(input))
 
-	postRequestHandler := http.HandlerFunc(app.HandleRequest(handler.PostToken))
+	postRequestHandler := http.HandlerFunc(app.NewHandler(handler.PostToken))
 	postResponse := httptest.NewRecorder()
 
 	postRequestHandler.ServeHTTP(postResponse, postDataRequest)
@@ -33,7 +33,7 @@ func TestInsertObj(t *testing.T) {
 	getDataRequest, _ := http.NewRequest("GET", "/token?id=1234", nil) 
 
 	getResponse := httptest.NewRecorder()
-	getRequestHandler := http.HandlerFunc(app.HandleRequest(handler.GetToken))
+	getRequestHandler := http.HandlerFunc(app.NewHandler(handler.GetToken))
 
 	getRequestHandler.ServeHTTP(getResponse, getDataRequest)
 
