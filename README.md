@@ -1,6 +1,6 @@
 # Third-Party Token Server
 
-A proxy server to cache access tokens and which can be retreived by Golui for silent login.
+Prototype for a server to cache access tokens 
 
 
 ## Endpoints
@@ -14,16 +14,8 @@ POST /token
 To retrieve the token;
 ```
 GET /token?id=1234
-
+response; 
+   200 {"token":"56789101112131415" }
 ```
 <br>
-
-## Usage
-
-Before redirecting the user to Golui the third-party app will Post the access token to cache and pass the link to retrieve the token to the token redirect URL
-
-```
-https://localhost:8444/v1/customer/third-party?token_url=www.https://<host>/token?id=1234
-```
- 
 
